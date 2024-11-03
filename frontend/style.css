@@ -1,0 +1,271 @@
+form#userForm {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.5); /* Adjusted opacity here */
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s; /* Smooth transition for background changes */
+}
+
+form#userForm:hover {
+    background: rgba(255, 255, 255, 0.8); /* Slightly higher opacity on hover */
+}
+
+form#userForm fieldset {
+    border: none;
+}
+
+form#userForm legend {
+    font-size: 1.5em;
+    color: #333333;
+}
+
+.form-row {
+    margin-bottom: 15px;
+}
+
+.form-row label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666666;
+}
+
+input[type="text"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: #0056b3;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2), 0 0 8px rgba(0, 86, 179, 0.6);
+    outline: none;
+}
+
+.submit-btn {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    background-image: linear-gradient(to right, #4ca1af, #c4e0e5);
+    color: #ffffff;
+    font-size: 1em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s;
+}
+
+.submit-btn:hover {
+    background-image: linear-gradient(to right, #4ca1af, #a4d4e6);
+}
+
+.submit-btn:active {
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#weatherEffect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+    background-color: transparent;
+}
+
+.rain-drop {
+    position: absolute;
+    bottom: 100%;
+    width: 3px; /* Slightly thicker for visibility */
+    height: 20px;
+    background: linear-gradient(to bottom, #007BFF, #5390D9); /* Gradient blue for a more natural look */
+    animation: fall 0.8s linear infinite; /* Slower fall for realism */
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+    }
+}
+
+.sun {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, #FFD700 60%, #FFA500 100%);
+    border-radius: 50%;
+    box-shadow: 0 0 50px 20px rgba(255, 223, 0, 0.6);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.sun-rays {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, transparent 70%, rgba(255, 223, 0, 0.6) 100%);
+    border-radius: 50%;
+    transform-origin: center;
+    animation: rotate 5s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+}
+
+.day-background{
+    background: linear-gradient(to bottom, #d1f2ff, #5eb3de);
+}
+
+.sunny-background {
+    background: linear-gradient(to bottom, #87CEEB, #FFD700);
+}
+
+.cloud {
+    position: absolute;
+    background: #FFFFFF;
+    border-radius: 50%;
+    box-shadow: -20px 20px 0 -10px #D3D3D3, 20px 20px 0 -10px #F0F0F0;
+    animation: moveClouds 20s linear infinite;
+    opacity: 0.9;
+}
+
+@keyframes moveClouds {
+    0% { left: -150px; }
+    100% { left: 100vw; }
+}
+
+.night-background {
+    background: linear-gradient(to bottom, #001848, #0B3D91);
+}
+
+.moon {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, #f0e68c 50%, transparent 60%);
+    border-radius: 50%;
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.5);
+}
+
+.night-cloud {
+    background: #A9A9A9;
+}
+
+.city {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 50vh;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.city-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.7;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+#title {
+    padding: 15px;
+    background: rgba(245, 245, 245, 0.8);
+    text-align: center;
+    font-size: 1.2rem;
+    color: #333;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
+    cursor: pointer; /* Indicates this is clickable */
+    user-select: none; /* Prevents text selection */
+}
+
+.dropdown-content {
+    display: none; /* Initially hidden */
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.8);
+    color: #444;
+    font-size: 1rem;
+    backdrop-filter: blur(4px); /* Consistency in design */
+    border-bottom-left-radius: 10px; /* Rounded corners for the dropdown */
+    border-bottom-right-radius: 10px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block; /* Shows the dropdown on hover */
+}
+
+.city {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50vh;
+    overflow: hidden;
+    z-index: -1; /* Maintain this to keep city background behind other elements */
+}
+
+.city-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.5; 
+}
+
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    box-shadow: 0 0 5px white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: blink 1s infinite ease-in-out;
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+}

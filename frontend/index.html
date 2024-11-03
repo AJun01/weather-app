@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherApp</title>
+    <script type="module" src="./handler.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="weatherEffect"></div>
+    <br></div>
+    <br></div>
+    <div>
+        <form id="userForm" method="post" action="/submitWeather">
+            <fieldset>
+                <legend>Enter Your Location</legend>
+                <div class="form-row">
+                    <label for="zip">Zip Code:</label>
+                    <input type="text" id="zip" name="zip" placeholder="e.g., 90210" required>
+                </div>
+                <div class="form-row">
+                    <label for="countryCode">Country Code:</label>
+                    <input type="text" id="countryCode" name="countryCode" placeholder="e.g., US" required>
+                </div>
+                <button type="submit" class="submit-btn">Check Weather</button>
+            </fieldset>
+        </form>
+        <br></div>
+        <div class="dropdown">
+            <div id="title">Weather Data</div>
+            <div class="dropdown-content" id="responsive">
+            </div>
+        </div>
+        <div class="city" style="z-index: -1;">
+            <img id="img" src="../assets/city.png" alt="City Landscape" class="city-image" style="opacity: 0%;"> 
+        </div>
+</body>
+</html>
